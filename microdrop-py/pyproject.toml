@@ -1,0 +1,39 @@
+[project]
+authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
+dependencies = ["pyside6>=6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
+name = "microdrop-py"
+requires-python = ">= 3.11"
+version = "0.1.0"
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge", "alexsk", "vignesh229"]
+platforms = ["win-64"]
+
+[tool.pixi.pypi-dependencies]
+microdrop_py = { path = ".", editable = true }
+
+[tool.pixi.tasks]
+
+[tool.pixi.dependencies]
+apptools = ">=5.3.1,<6"
+dramatiq = ">=1.18.0,<2"
+dropbot = ">=1.73.22.post2,<2"
+redis-server = ">=3.0.501,<4"
+envisage = ">=7.0.4,<8"
+pyface = ">=8.0.0,<9"
+pytest = ">=8.4.2,<9"
+shapely = ">=2.1.1,<3"
+pydantic = ">=2.11.7,<3"
+traits = ">=7.0.2,<8"
+traitsui = ">=8.0.0,<9"
+redis-py = ">=6.4.0,<7"
+apscheduler = ">=3.11.0,<4"
+ipython = ">=9.5.0,<10"
+tqdm = ">=4.67.1,<5"
+
+[tool.pixi.target.win-64.dependencies]
+ntfsutils = ">=0.1.5,<0.2"
