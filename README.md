@@ -5,7 +5,7 @@ This guide provides instructions on how to set up and run the Microdrop project.
 1. Navigating to the microdrop-py directory:
 
 ```shell
-cd microdrop-py>
+cd microdrop-py
 ```
 
 
