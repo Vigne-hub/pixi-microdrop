@@ -9,7 +9,7 @@ cd microdrop-py
 ```
 
 
-2. Initializing and Updating SubmodulesIf you cloned the repository without using the --recursive flag, or if you need to update any nested repositories, run the following command to initialize and update all submodules:
+2. Initializing and updating Submodules if you cloned the repository without using the --recursive flag, or if you need to update any nested repositories, run the following command to initialize and update all submodules:
 
 ```shell
 git submodule update --init --recursive`
