@@ -19,6 +19,6 @@ git submodule update --init --recursive`
 3. To start the Microdrop application, use the pixi command with the following script:
 
 ```shell
-pixi run python .\tools\run_device_viewer_pluggable.py
+pixi run microdrop
 ```
 
