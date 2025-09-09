@@ -1,11 +1,11 @@
 # Getting Started with Pixi for Microdrop
 
-This guide provides instructions on how to set up and run the Microdrop project.
+This guide provides instructions on how to set up and run the [Microdrop](https://github.com/Blue-Ocean-Technologies-Inc/Microdrop) project using [Pixi](https://pixi.sh/dev/installation).
 
 1. Navigating to the microdrop-py directory:
 
 ```shell
-cd microdrop-py>
+cd microdrop-py
 ```
 
 
