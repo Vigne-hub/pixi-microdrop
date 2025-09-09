@@ -25,10 +25,8 @@ packages = ["src/device_viewer",
     "src/manual_controls",
     "src/message_router",
     "src/microdrop_utils",
-    "src/microdrop_application"
+    "src/microdrop_application",
 ]
-
-[tool.pixi.tasks]
 
 [tool.pixi.dependencies]
 apptools = ">=5.3.1,<6"
@@ -49,3 +47,6 @@ tqdm = ">=4.67.1,<5"
 
 [tool.pixi.target.win-64.dependencies]
 ntfsutils = ">=0.1.5,<0.2"
+
+[tool.pixi.tasks]
+microdrop = "python scripts/run_device_viewer_pluggable.py"
