@@ -16,6 +16,17 @@ platforms = ["win-64"]
 [tool.pixi.pypi-dependencies]
 microdrop_py = { path = ".", editable = true }
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/device_viewer",
+    "src/dropbot_controller",
+    "src/dropbot_status",
+    "src/dropbot_tools_menu",
+    "src/electrode_controller",
+    "src/manual_controls",
+    "src/message_router",
+    "src/microdrop_utils"
+]
+
 [tool.pixi.tasks]
 
 [tool.pixi.dependencies]
