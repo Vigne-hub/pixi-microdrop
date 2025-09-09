@@ -24,7 +24,8 @@ packages = ["src/device_viewer",
     "src/electrode_controller",
     "src/manual_controls",
     "src/message_router",
-    "src/microdrop_utils"
+    "src/microdrop_utils",
+    "src/microdrop_application"
 ]
 
 [tool.pixi.tasks]
