@@ -3,6 +3,7 @@ authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
 dependencies = ["pyside6>=6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
 name = "microdrop-py"
 requires-python = ">= 3.11"
+scripts = { microdrop = "examples.run_device_viewer_pluggable:main" }
 version = "0.1.0"
 
 [build-system]
@@ -26,6 +27,7 @@ packages = ["src/device_viewer",
     "src/message_router",
     "src/microdrop_utils",
     "src/microdrop_application",
+    "src/examples"
 ]
 
 [tool.pixi.dependencies]
@@ -47,6 +49,3 @@ tqdm = ">=4.67.1,<5"
 
 [tool.pixi.target.win-64.dependencies]
 ntfsutils = ">=0.1.5,<0.2"
-
-[tool.pixi.tasks]
-microdrop = "python scripts/run_device_viewer_pluggable.py"

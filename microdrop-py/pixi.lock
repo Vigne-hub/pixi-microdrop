@@ -2009,7 +2009,7 @@ packages:
 - pypi: ./
   name: microdrop-py
   version: 0.1.0
-  sha256: b7bd1d8ba890430deed79e2c91fa1b785224511cd829e414f5161ebc57bf80fb
+  sha256: 09bcefe0032366cc1da02d33d9bfa9c6d92636e02e3a536bb8d3b3dbfbc5486d
   requires_dist:
   - pyside6>=6.9.2,<7
   - opencv-python-headless>=4.11.0.86,<5
