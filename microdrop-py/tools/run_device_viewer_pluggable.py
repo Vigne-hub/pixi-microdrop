@@ -18,7 +18,7 @@ from PySide6.QtGui import QFont
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from examples.plugin_consts import (REQUIRED_PLUGINS, FRONTEND_PLUGINS, BACKEND_PLUGINS,
+from plugin_consts import (REQUIRED_PLUGINS, FRONTEND_PLUGINS, BACKEND_PLUGINS,
                                     FRONTEND_CONTEXT, BACKEND_CONTEXT, REQUIRED_CONTEXT,
                                     DEFAULT_APPLICATION)
 from microdrop_utils._logger import get_logger
