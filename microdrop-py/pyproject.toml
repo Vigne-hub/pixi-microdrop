@@ -3,7 +3,7 @@ authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
 dependencies = ["pyside6>=6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
 name = "microdrop-py"
 requires-python = ">= 3.11"
-scripts = { microdrop = "examples.run_device_viewer_pluggable:main" }
+scripts = { microdrop = "examples.microdrop:microdrop" }
 version = "0.1.0"
 
 [build-system]
@@ -46,6 +46,9 @@ redis-py = ">=6.4.0,<7"
 apscheduler = ">=3.11.0,<4"
 ipython = ">=9.5.0,<10"
 tqdm = ">=4.67.1,<5"
+ffmpeg = ">=8.0.0,<9"
+mr-box-peripheral-board = ">=0.31.7,<0.32"
+"svg.path" = ">=7.0,<8"
 
 [tool.pixi.target.win-64.dependencies]
 ntfsutils = ">=0.1.5,<0.2"
