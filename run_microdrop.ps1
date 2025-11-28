@@ -2,7 +2,7 @@
 # $targetPath = ".\microdrop-py"
 
 # Optional: If you want to run it in the *same* folder where this script is saved, uncomment the line below:
-$targetPath = "$PSScriptRoot\microdrop-py"
+$targetPath = "$PSScriptRoot\microdrop-py\src"
 
 Write-Host "----------------------------------------" -ForegroundColor Cyan
 Write-Host "      Pixi Microdrop Launcher           " -ForegroundColor Green
@@ -18,6 +18,7 @@ if (Test-Path -Path $targetPath) {
 
         # --- Step 1: Git Pull (via Pixi) ---
         Write-Host "Checking for updates (pixi run git pull)..." -ForegroundColor Cyan
+        & pixi run git checkout main # always be in main branch
         & pixi run git pull
         Write-Host "----------------------------------------" -ForegroundColor Cyan
 
