@@ -2,6 +2,10 @@
 
 This guide provides instructions on how to set up and run the [Microdrop](https://github.com/Blue-Ocean-Technologies-Inc/Microdrop) project using [Pixi](https://pixi.sh/dev/installation).
 
+## Easy Way On Windows
+Run `microdrop.bat`
+
+## Manual way
 1. Navigating to the microdrop-py directory:
 
 ```shell
