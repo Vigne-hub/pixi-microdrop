@@ -356,10 +356,10 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/zlib-ng-2.3.2-ha7cb516_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/zstd-1.5.7-h85ac4a6_6.conda
       - pypi: https://files.pythonhosted.org/packages/45/be/1438ce43ebe65317344a87e4b150865c5585f4c0db880a34cdae5ac46881/opencv_python_headless-4.11.0.86-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-      - pypi: https://files.pythonhosted.org/packages/94/2d/715db9da437b4632d06e2c4718aee9937760b84cf36c23d5441989e581b0/pyside6-6.9.2-cp39-abi3-manylinux_2_39_aarch64.whl
-      - pypi: https://files.pythonhosted.org/packages/f4/55/dc42a73387379bae82f921b7659cd2006ec0e80f7052f83ddc07e9eb9cca/pyside6_addons-6.9.2-cp39-abi3-manylinux_2_39_aarch64.whl
-      - pypi: https://files.pythonhosted.org/packages/9a/a1/1203d4db6919b42a937d9ac5ddb84b20ea42eb119f7c1ddeb77cb8fdb00c/pyside6_essentials-6.9.2-cp39-abi3-manylinux_2_39_aarch64.whl
-      - pypi: https://files.pythonhosted.org/packages/52/c4/09e902f5612a509cef2c8712c516e4fe44f3a1ae9fcd8921baddb5e6bae4/shiboken6-6.9.2-cp39-abi3-manylinux_2_39_aarch64.whl
+      - pypi: https://files.pythonhosted.org/packages/99/1d/d96496aae8de2b14d372a1e46d06c7f355291c1f3cdd7f90ef48c7d88373/PySide6-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
+      - pypi: https://files.pythonhosted.org/packages/cc/10/5f494352be48c8c419992c9974bd4f2168c9f99f58a7dad63dc2382396c1/PySide6_Addons-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
+      - pypi: https://files.pythonhosted.org/packages/6f/ee/9023d3851054db24c28312744de8bdb80dcf8de20bd583b6520da416484f/PySide6_Essentials-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
+      - pypi: https://files.pythonhosted.org/packages/13/cd/e9a6d0aa8794f777627a9fb3cffed0ac8449881b33e2325b5bcff10c36bc/shiboken6-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
       - pypi: ./
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/_openmp_mutex-4.5-2_gnu.tar.bz2
@@ -3049,9 +3049,9 @@ packages:
 - pypi: ./
   name: microdrop-py
   version: 0.1.0
-  sha256: 9e933a14b7378c9951d05e197a57731bc2703203a402e60aa849d5777f6633c4
+  sha256: b7703e338e009bfdace1969acb6a8214c47d6e88b478a8dd417b7fe26c415bda
   requires_dist:
-  - pyside6==6.9.2,<7
+  - pyside6<=6.9.2,<7
   - opencv-python-headless>=4.11.0.86,<5
   requires_python: '>=3.11'
   editable: true
@@ -3867,29 +3867,29 @@ packages:
   - pkg:pypi/pyserial?source=hash-mapping
   size: 73910
   timestamp: 1767289527295
-- pypi: https://files.pythonhosted.org/packages/94/2d/715db9da437b4632d06e2c4718aee9937760b84cf36c23d5441989e581b0/pyside6-6.9.2-cp39-abi3-manylinux_2_39_aarch64.whl
+- pypi: https://files.pythonhosted.org/packages/99/1d/d96496aae8de2b14d372a1e46d06c7f355291c1f3cdd7f90ef48c7d88373/PySide6-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
   name: pyside6
-  version: 6.9.2
-  sha256: a78fad16241a1f2ed0fa0098cf3d621f591fc75b4badb7f3fa3959c9d861c806
+  version: 6.8.0.2
+  sha256: 6a25cf784f978fa2a23b4d089970b27ebe14d26adcaf38b2819cb04483de4ce9
   requires_dist:
-  - shiboken6==6.9.2
-  - pyside6-essentials==6.9.2
-  - pyside6-addons==6.9.2
+  - shiboken6==6.8.0.2
+  - pyside6-essentials==6.8.0.2
+  - pyside6-addons==6.8.0.2
   requires_python: '>=3.9,<3.14'
-- pypi: https://files.pythonhosted.org/packages/f4/55/dc42a73387379bae82f921b7659cd2006ec0e80f7052f83ddc07e9eb9cca/pyside6_addons-6.9.2-cp39-abi3-manylinux_2_39_aarch64.whl
+- pypi: https://files.pythonhosted.org/packages/cc/10/5f494352be48c8c419992c9974bd4f2168c9f99f58a7dad63dc2382396c1/PySide6_Addons-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
   name: pyside6-addons
-  version: 6.9.2
-  sha256: af8dee517de8d336735a6543f7dd496eb580e852c14b4d2304b890e2a29de499
+  version: 6.8.0.2
+  sha256: 553f3fa412f423929b5cd8b7d43fd5f02161851f10a438174a198b0f1a044df7
   requires_dist:
-  - shiboken6==6.9.2
-  - pyside6-essentials==6.9.2
+  - shiboken6==6.8.0.2
+  - pyside6-essentials==6.8.0.2
   requires_python: '>=3.9,<3.14'
-- pypi: https://files.pythonhosted.org/packages/9a/a1/1203d4db6919b42a937d9ac5ddb84b20ea42eb119f7c1ddeb77cb8fdb00c/pyside6_essentials-6.9.2-cp39-abi3-manylinux_2_39_aarch64.whl
+- pypi: https://files.pythonhosted.org/packages/6f/ee/9023d3851054db24c28312744de8bdb80dcf8de20bd583b6520da416484f/PySide6_Essentials-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
   name: pyside6-essentials
-  version: 6.9.2
-  sha256: d0f701503974bd51b408966539aa6956f3d8536e547ea8002fbfb3d77796bbc3
+  version: 6.8.0.2
+  sha256: cf490145d18812a6cff48b0b0afb0bfaf7066744bfbd09eb071c3323f1d6d00d
   requires_dist:
-  - shiboken6==6.9.2
+  - shiboken6==6.8.0.2
   requires_python: '>=3.9,<3.14'
 - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha55dd90_7.conda
   sha256: ba3b032fa52709ce0d9fd388f63d330a026754587a2f461117cac9ab73d8d0d8
@@ -4283,10 +4283,10 @@ packages:
   - pkg:pypi/shapely?source=hash-mapping
   size: 647153
   timestamp: 1762524772748
-- pypi: https://files.pythonhosted.org/packages/52/c4/09e902f5612a509cef2c8712c516e4fe44f3a1ae9fcd8921baddb5e6bae4/shiboken6-6.9.2-cp39-abi3-manylinux_2_39_aarch64.whl
+- pypi: https://files.pythonhosted.org/packages/13/cd/e9a6d0aa8794f777627a9fb3cffed0ac8449881b33e2325b5bcff10c36bc/shiboken6-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
   name: shiboken6
-  version: 6.9.2
-  sha256: a5f5985938f5acb604c23536a0ff2efb3cccb77d23da91fbaff8fd8ded3dceb4
+  version: 6.8.0.2
+  sha256: 1aaa8b7f9138818322ef029b2c487d1c6e00dc3f53084e62e1d11bdea47e47c2
   requires_python: '>=3.9,<3.14'
 - conda: https://conda.anaconda.org/conda-forge/noarch/six-1.17.0-pyhe01879c_1.conda
   sha256: 458227f759d5e3fcec5d9b7acce54e10c9e1f4f4b7ec978f3bfd54ce4ee9853d
