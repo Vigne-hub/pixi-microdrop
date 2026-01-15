@@ -1,6 +1,6 @@
 [project]
 authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
-dependencies = ["pyside6<=6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
+dependencies = ["pyside6==6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
 name = "microdrop-py"
 requires-python = ">= 3.11"
 scripts = { microdrop = "examples.microdrop:microdrop" }
@@ -18,7 +18,7 @@ platforms = ["linux-aarch64"]
 # This tells Pixi (and uv) to select wheels compatible with glibc 2.31
 # This effectively enforces "manylinux_2_31" for PyPI packages.
 [tool.pixi.system-requirements]
-libc = { family = "glibc", version = "2.31" }
+libc = { family = "glibc", version = "2.39" }
 
 [tool.pixi.pypi-dependencies]
 microdrop_py = { path = ".", editable = true }
