@@ -13,7 +13,7 @@ requires = ["hatchling"]
 
 [tool.pixi.workspace]
 channels = ["conda-forge", "alexsk", "vignesh229"]
-platforms = ["win-64", "linux-64"]
+platforms = ["win-64", "linux-64", "linux-aarch64"]
 
 # --- NEW: System Requirements ---
 # This tells Pixi (and uv) to select wheels compatible with glibc 2.31
