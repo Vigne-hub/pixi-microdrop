@@ -12,7 +12,7 @@ requires = ["hatchling"]
 
 [tool.pixi.workspace]
 channels = ["conda-forge", "alexsk", "vignesh229"]
-platforms = ["win-64", "linux-64", "linux-aarch64"]
+platforms = ["win-64"]
 
 [tool.pixi.pypi-dependencies]
 microdrop_py = { path = ".", editable = true }
@@ -53,11 +53,3 @@ mr-box-peripheral-board = ">=0.31.7,<0.32"
 [tool.pixi.target.win-64.dependencies]
 ntfsutils = ">=0.1.5,<0.2"
 redis-server = ">=3.0.501,<4"
-
-[tool.pixi.target.linux-64.dependencies]
-# Linux can use a newer Redis (standard on conda-forge is ~7.0)
-redis-server = ">=6.0.0"
-
-[tool.pixi.target.linux-aarch64.dependencies]
-# Linux can use a newer Redis (standard on conda-forge is ~7.0)
-redis-server = ">=6.0.0"
