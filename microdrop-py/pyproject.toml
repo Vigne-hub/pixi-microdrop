@@ -34,7 +34,7 @@ packages = ["src/device_viewer",
 apptools = ">=5.3.1,<6"
 dramatiq = ">=1.18.0,<2"
 dropbot = ">=1.73.22.post2,<2"
-redis-server = ">=3.0.501,<4"
+# redis-server removed from here (moved to targets below)
 envisage = ">=7.0.4,<8"
 pyface = ">=8.0.0,<9"
 pytest = ">=8.4.2,<9"
@@ -52,3 +52,8 @@ mr-box-peripheral-board = ">=0.31.7,<0.32"
 
 [tool.pixi.target.win-64.dependencies]
 ntfsutils = ">=0.1.5,<0.2"
+redis-server = ">=3.0.501,<4"
+
+[tool.pixi.target.linux-64.dependencies]
+# Linux can use a newer Redis (standard on conda-forge is ~7.0)
+redis-server = ">=6.0.0"
