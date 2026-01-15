@@ -1,6 +1,7 @@
 [project]
 authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
-dependencies = ["pyside6<=6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
+# REMOVED pyside6 from here so we can define it per-platform below
+dependencies = ["opencv-python-headless>=4.11.0.86,<5"]
 name = "microdrop-py"
 requires-python = ">= 3.11"
 scripts = { microdrop = "examples.microdrop:microdrop" }
@@ -12,29 +13,41 @@ requires = ["hatchling"]
 
 [tool.pixi.workspace]
 channels = ["conda-forge", "alexsk", "vignesh229"]
-platforms = ["win-64", "linux-64", "linux-aarch64"]
+platforms = ["win-64", "linux-64"]
+
+# --- NEW: System Requirements ---
+# This tells Pixi (and uv) to select wheels compatible with glibc 2.31
+# This effectively enforces "manylinux_2_31" for PyPI packages.
+[tool.pixi.system-requirements]
+libc = { family = "glibc", version = "2.31" }
 
 [tool.pixi.pypi-dependencies]
 microdrop_py = { path = ".", editable = true }
 
+# --- WINDOWS CONFIGURATION (Use Conda/Defaults) ---
+[tool.pixi.target.win-64.dependencies]
+ntfsutils = ">=0.1.5,<0.2"
+redis-server = ">=3.0.501,<4"
+# We keep PySide6 as a Conda package for Windows (recommended)
+pyside6 = ">=6.9.2,<7"
+
+# --- LINUX CONFIGURATION (Force Manylinux Wheel) ---
+[tool.pixi.target.linux-64.dependencies]
+redis-server = ">=6.0.0"
+
+[tool.pixi.target.linux-64.pypi-dependencies]
+# By placing this in pypi-dependencies and setting libc=2.31 above,
+# Pixi will download the manylinux_2_31 wheel.
+pyside6 = ">=6.9.2,<7"
+
+# ... [The rest of your dependencies remain unchanged] ...
 [tool.hatch.build.targets.wheel]
-packages = ["src/device_viewer",
-    "src/dropbot_controller",
-    "src/dropbot_status",
-    "src/dropbot_tools_menu",
-    "src/electrode_controller",
-    "src/manual_controls",
-    "src/message_router",
-    "src/microdrop_utils",
-    "src/microdrop_application",
-    "src/examples"
-]
+packages = ["src/device_viewer", "src/dropbot_controller", "src/dropbot_status", "src/dropbot_tools_menu", "src/electrode_controller", "src/manual_controls", "src/message_router", "src/microdrop_utils", "src/microdrop_application", "src/examples"]
 
 [tool.pixi.dependencies]
 apptools = ">=5.3.1,<6"
 dramatiq = ">=1.18.0,<2"
 dropbot = ">=1.73.22.post2,<2"
-# redis-server removed from here (moved to targets below)
 envisage = ">=7.0.4,<8"
 pyface = ">=8.0.0,<9"
 pytest = ">=8.4.2,<9"
@@ -49,15 +62,3 @@ tqdm = ">=4.67.1,<5"
 ffmpeg = ">=8.0.0,<9"
 mr-box-peripheral-board = ">=0.31.7,<0.32"
 "svg.path" = ">=7.0,<8"
-
-[tool.pixi.target.win-64.dependencies]
-ntfsutils = ">=0.1.5,<0.2"
-redis-server = ">=3.0.501,<4"
-
-[tool.pixi.target.linux-64.dependencies]
-# Linux can use a newer Redis (standard on conda-forge is ~7.0)
-redis-server = ">=6.0.0"
-
-[tool.pixi.target.linux-aarch64.dependencies]
-# Linux can use a newer Redis (standard on conda-forge is ~7.0)
-redis-server = ">=6.0.0"
