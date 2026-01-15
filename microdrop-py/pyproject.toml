@@ -1,7 +1,6 @@
 [project]
 authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
-# REMOVED pyside6 from here so we can define it per-platform below
-dependencies = ["opencv-python-headless>=4.11.0.86,<5"]
+dependencies = ["pyside6<=6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
 name = "microdrop-py"
 requires-python = ">= 3.11"
 scripts = { microdrop = "examples.microdrop:microdrop" }
@@ -13,7 +12,7 @@ requires = ["hatchling"]
 
 [tool.pixi.workspace]
 channels = ["conda-forge", "alexsk", "vignesh229"]
-platforms = ["win-64", "linux-64", "linux-aarch64"]
+platforms = ["linux-aarch64"]
 
 # --- NEW: System Requirements ---
 # This tells Pixi (and uv) to select wheels compatible with glibc 2.31
@@ -24,25 +23,18 @@ libc = { family = "glibc", version = "2.31" }
 [tool.pixi.pypi-dependencies]
 microdrop_py = { path = ".", editable = true }
 
-# --- WINDOWS CONFIGURATION (Use Conda/Defaults) ---
-[tool.pixi.target.win-64.dependencies]
-ntfsutils = ">=0.1.5,<0.2"
-redis-server = ">=3.0.501,<4"
-# We keep PySide6 as a Conda package for Windows (recommended)
-pyside6 = ">=6.9.2,<7"
-
-# --- LINUX CONFIGURATION (Force Manylinux Wheel) ---
-[tool.pixi.target.linux-64.dependencies]
-redis-server = ">=6.0.0"
-
-[tool.pixi.target.linux-64.pypi-dependencies]
-# By placing this in pypi-dependencies and setting libc=2.31 above,
-# Pixi will download the manylinux_2_31 wheel.
-pyside6 = ">=6.9.2,<7"
-
-# ... [The rest of your dependencies remain unchanged] ...
 [tool.hatch.build.targets.wheel]
-packages = ["src/device_viewer", "src/dropbot_controller", "src/dropbot_status", "src/dropbot_tools_menu", "src/electrode_controller", "src/manual_controls", "src/message_router", "src/microdrop_utils", "src/microdrop_application", "src/examples"]
+packages = ["src/device_viewer",
+    "src/dropbot_controller",
+    "src/dropbot_status",
+    "src/dropbot_tools_menu",
+    "src/electrode_controller",
+    "src/manual_controls",
+    "src/message_router",
+    "src/microdrop_utils",
+    "src/microdrop_application",
+    "src/examples"
+]
 
 [tool.pixi.dependencies]
 apptools = ">=5.3.1,<6"
