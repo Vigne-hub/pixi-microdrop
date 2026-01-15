@@ -291,6 +291,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/re2-2025.06.26-haa97905_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/readline-8.3-hb682ff5_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/redis-py-6.4.0-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/redis-server-7.4.0-h52a6840_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/requests-2.32.5-pyhcf101f3_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/ruamel.yaml-0.19.1-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/ruamel.yaml.clib-0.2.15-py313h62ef0ea_1.conda
@@ -3048,7 +3049,7 @@ packages:
 - pypi: ./
   name: microdrop-py
   version: 0.1.0
-  sha256: 366c8a8e6f501fc3032f1553488a1abcb367c45c9598633800e7a3b108587e66
+  sha256: b7703e338e009bfdace1969acb6a8214c47d6e88b478a8dd417b7fe26c415bda
   requires_dist:
   - pyside6<=6.9.2,<7
   - opencv-python-headless>=4.11.0.86,<5
@@ -4091,6 +4092,16 @@ packages:
   - pkg:pypi/redis?source=hash-mapping
   size: 187610
   timestamp: 1754587534728
+- conda: https://conda.anaconda.org/conda-forge/linux-aarch64/redis-server-7.4.0-h52a6840_0.conda
+  sha256: 76aa9358ce360f32b9464cfac29fce3af3b2bc31ebe49725191ba4825203f3a1
+  md5: 0069083fcfcbbcea8c6d3c1b7bca6a98
+  depends:
+  - libgcc-ng >=12
+  - openssl >=3.3.1,<4.0a0
+  license: SSPL-1.0 OR LicenseRef-RSALv2
+  purls: []
+  size: 8603322
+  timestamp: 1723704960725
 - conda: https://conda.anaconda.org/conda-forge/noarch/requests-2.32.5-pyhcf101f3_1.conda
   sha256: 7813c38b79ae549504b2c57b3f33394cea4f2ad083f0994d2045c2e24cb538c5
   md5: c65df89a0b2e321045a9e01d1337b182
