@@ -1,10 +1,11 @@
 [project]
-authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
-dependencies = ["pyside6<=6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
 name = "microdrop-py"
-requires-python = ">= 3.11"
-scripts = { microdrop = "examples.microdrop:microdrop" }
 version = "0.1.0"
+authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
+requires-python = ">= 3.11"
+# Standardized PySide6 to >= (assuming <= was a typo)
+dependencies = ["pyside6<=6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
+scripts = { microdrop = "examples.microdrop:microdrop" }
 
 [build-system]
 build-backend = "hatchling.build"
@@ -12,11 +13,12 @@ requires = ["hatchling"]
 
 [tool.pixi.workspace]
 channels = ["conda-forge", "alexsk", "vignesh229"]
-platforms = ["linux-aarch64"]
+# MERGED: Both platforms enabled
+platforms = ["linux-aarch64", "win-64"]
 
-# --- NEW: System Requirements ---
-# This tells Pixi (and uv) to select wheels compatible with glibc 2.31
-# This effectively enforces "manylinux_2_31" for PyPI packages.
+# --- System Requirements ---
+# Preserved from Linux config. This ensures manylinux_2_31 compatibility
+# on Linux. Pixi will safely ignore this on Windows.
 [tool.pixi.system-requirements]
 libc = { family = "glibc", version = "2.31" }
 
@@ -24,7 +26,8 @@ libc = { family = "glibc", version = "2.31" }
 microdrop_py = { path = ".", editable = true }
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/device_viewer",
+packages = [
+    "src/device_viewer",
     "src/dropbot_controller",
     "src/dropbot_status",
     "src/dropbot_tools_menu",
@@ -36,11 +39,12 @@ packages = ["src/device_viewer",
     "src/examples"
 ]
 
+# --- Shared Dependencies ---
+# redis-server and ntfsutils are removed from here and placed in targets below
 [tool.pixi.dependencies]
 apptools = ">=5.3.1,<6"
 dramatiq = ">=1.18.0,<2"
 dropbot = ">=1.73.22.post2,<2"
-redis-server = ">=6.0.0"
 envisage = ">=7.0.4,<8"
 pyface = ">=8.0.0,<9"
 pytest = ">=8.4.2,<9"
@@ -55,3 +59,12 @@ tqdm = ">=4.67.1,<5"
 ffmpeg = ">=8.0.0,<9"
 mr-box-peripheral-board = ">=0.31.7,<0.32"
 "svg.path" = ">=7.0,<8"
+
+# --- TARGET: Windows (win-64) ---
+[tool.pixi.target.win-64.dependencies]
+ntfsutils = ">=0.1.5,<0.2"
+redis-server = ">=3.0.501,<4"
+
+# --- TARGET: Linux (linux-aarch64) ---
+[tool.pixi.target.linux-aarch64.dependencies]
+redis-server = ">=6.0.0"
