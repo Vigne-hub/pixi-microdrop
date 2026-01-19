@@ -1,6 +1,15 @@
 #!/bin/bash
 
-# Configuration: Paths
+# Configuration:
+# Set the environment variable:
+export QT_MEDIA_BACKEND=gstreamer
+
+# Stop the wireplumber service
+systemctl --user stop wireplumber
+
+echo "Wireplumber stopped and QT backend variable set."
+
+# Paths:
 # Get the directory where this script is located (Equivalent to $PSScriptRoot)
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
