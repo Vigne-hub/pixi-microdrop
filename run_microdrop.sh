@@ -19,7 +19,8 @@ ENV_ROOT="$SCRIPT_DIR/.pixi/envs/default"
 export LD_LIBRARY_PATH="$ENV_ROOT/lib:$LD_LIBRARY_PATH"
 
 # Export the QT Plugin path
-QT_PLATFORMS="$ENV_ROOT"/lib/python*/site-packages/PySide6/Qt/plugins/platforms
+# Correct way: resolving the wildcard immediately
+QT_PLATFORMS=$(ls -d "$ENV_ROOT"/lib/python*/site-packages/PySide6/Qt/plugins/platforms 2>/dev/null | head -n 1)
 export QT_QPA_PLATFORM_PLUGIN_PATH="$QT_PLATFORMS"
 echo "Qt Platforms path set to: $QT_PLATFORMS"
 
