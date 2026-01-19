@@ -3,7 +3,6 @@
 # Configuration:
 # Set the environment variable:
 export QT_MEDIA_BACKEND=gstreamer
-
 # Stop the wireplumber service
 systemctl --user stop wireplumber
 
@@ -12,6 +11,17 @@ echo "Wireplumber stopped and QT backend variable set."
 # Paths:
 # Get the directory where this script is located (Equivalent to $PSScriptRoot)
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+
+# Define where the Pixi environment lives relative to this script
+ENV_ROOT="$SCRIPT_DIR/.pixi/envs/default"
+
+#Export the LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="$ENV_ROOT/lib:$LD_LIBRARY_PATH"
+
+# Export the QT Plugin path
+QT_PLATFORMS="$ENV_ROOT"/lib/python*/site-packages/PySide6/Qt/plugins/platforms
+export QT_QPA_PLATFORM_PLUGIN_PATH="$QT_PLATFORMS"
+echo "Qt Platforms path set to: $QT_PLATFORMS"
 
 # Parent module path (microdrop-py)
 PARENT_PATH="$SCRIPT_DIR/microdrop-py"
