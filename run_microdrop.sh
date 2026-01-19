@@ -11,9 +11,13 @@ echo "Wireplumber stopped and QT backend variable set."
 # Paths:
 # Get the directory where this script is located (Equivalent to $PSScriptRoot)
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+# Parent module path (microdrop-py)
+PARENT_PATH="$SCRIPT_DIR/microdrop-py"
+# Application source path (microdrop-py/src)
+TARGET_PATH="$PARENT_PATH/src"
 
 # Define where the Pixi environment lives relative to this script
-ENV_ROOT="$SCRIPT_DIR/.pixi/envs/default"
+ENV_ROOT="$PARENT_PATH/microdrop-py/.pixi/envs/default"
 
 #Export the LD_LIBRARY_PATH
 export LD_LIBRARY_PATH="$ENV_ROOT/lib:$LD_LIBRARY_PATH"
@@ -23,11 +27,6 @@ export LD_LIBRARY_PATH="$ENV_ROOT/lib:$LD_LIBRARY_PATH"
 QT_PLATFORMS=$(ls -d "$ENV_ROOT"/lib/python*/site-packages/PySide6/Qt/plugins/platforms 2>/dev/null | head -n 1)
 export QT_QPA_PLATFORM_PLUGIN_PATH="$QT_PLATFORMS"
 echo "Qt Platforms path set to: $QT_PLATFORMS"
-
-# Parent module path (microdrop-py)
-PARENT_PATH="$SCRIPT_DIR/microdrop-py"
-# Application source path (microdrop-py/src)
-TARGET_PATH="$PARENT_PATH/src"
 
 # Define Colors
 RED='\033[0;31m'
