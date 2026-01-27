@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
 requires-python = ">= 3.11"
 # Standardized PySide6 to >= (assuming <= was a typo)
-dependencies = ["pyside6<=6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
+dependencies = ["pyside6<=6.9.2,<7"]
 scripts = { microdrop = "examples.microdrop:microdrop" }
 
 [build-system]
