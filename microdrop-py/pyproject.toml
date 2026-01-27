@@ -1,6 +1,6 @@
 [project]
 authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
-dependencies = ["pyside6>=6.9.2,<7", "opencv-python-headless>=4.11.0.86,<5"]
+dependencies = ["pyside6==6.9.2,<7"]
 name = "microdrop-py"
 requires-python = ">= 3.11"
 scripts = { microdrop = "examples.microdrop:microdrop" }
