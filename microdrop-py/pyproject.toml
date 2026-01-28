@@ -3,7 +3,6 @@ name = "microdrop-py"
 version = "0.1.0"
 authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
 requires-python = ">= 3.11"
-# Standardized PySide6 to >= (assuming <= was a typo)
 dependencies = ["pyside6<=6.9.2,<7"]
 scripts = { microdrop = "examples.microdrop:microdrop" }
 
@@ -13,7 +12,6 @@ requires = ["hatchling"]
 
 [tool.pixi.workspace]
 channels = ["conda-forge", "alexsk", "vignesh229"]
-# MERGED: Both platforms enabled
 platforms = ["linux-aarch64", "win-64"]
 
 # --- System Requirements ---
