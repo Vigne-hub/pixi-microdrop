@@ -228,6 +228,7 @@ environments:
       - conda: https://conda.anaconda.org/alexsk/noarch/nanopb-0.4.9.1-py_0.tar.bz2
       - conda: https://conda.anaconda.org/alexsk/noarch/nanopb-helpers-0.12.5-py_0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/nanopb-helpers-dev-0.12.5-0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/narwhals-2.15.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/ncurses-6.5-ha32ae93_3.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/numexpr-2.14.1-py313hc98aa87_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/numpy-2.4.1-py313h11e5ff7_0.conda
@@ -256,6 +257,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.5.1-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/platformio-6.1.18-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/platformio-helpers-0.10.5-py_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/plotly-6.5.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pluggy-1.6.0-pyhf9edf01_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/prometheus_client-0.24.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/prompt-toolkit-3.0.52-pyha770c72_0.conda
@@ -529,6 +531,7 @@ environments:
       - conda: https://conda.anaconda.org/alexsk/noarch/nanopb-0.4.9.1-py_0.tar.bz2
       - conda: https://conda.anaconda.org/alexsk/noarch/nanopb-helpers-0.12.5-py_0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/nanopb-helpers-dev-0.12.5-0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/narwhals-2.15.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/ntfsutils-0.1.5-py_0.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/win-64/numexpr-2.14.1-mkl_py313h8cafd6b_1.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/numpy-2.4.1-py313hce7ae62_0.conda
@@ -555,6 +558,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.5.1-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/platformio-6.1.18-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/platformio-helpers-0.10.5-py_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/plotly-6.5.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pluggy-1.6.0-pyhf9edf01_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/prometheus_client-0.24.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/prompt-toolkit-3.0.52-pyha770c72_0.conda
@@ -4702,7 +4706,7 @@ packages:
 - pypi: ./
   name: microdrop-py
   version: 0.1.0
-  sha256: cf35bbcdad8630cfe99f24590e7c6d590ee84e326eeecaf8fbaa719b16aecccb
+  sha256: 60bcc7c79b84d4205b48efdc9e8280408fadf2379a3bbc334c0120730d41aa08
   requires_dist:
   - pyside6<=6.9.2,<7
   requires_python: '>=3.11'
@@ -4842,6 +4846,18 @@ packages:
   license: BSD-3
   size: 12437
   timestamp: 1749770093159
+- conda: https://conda.anaconda.org/conda-forge/noarch/narwhals-2.15.0-pyhcf101f3_0.conda
+  sha256: 2e64699401c6170ce9a0916461ff4686f8d10b076f6abe1d887cbcb7061c0e85
+  md5: 37926bb0db8b04b8b99945076e1442d0
+  depends:
+  - python >=3.10
+  - python
+  license: MIT
+  license_family: MIT
+  purls:
+  - pkg:pypi/narwhals?source=compressed-mapping
+  size: 272452
+  timestamp: 1767693390284
 - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/ncurses-6.5-ha32ae93_3.conda
   sha256: 91cfb655a68b0353b2833521dc919188db3d8a7f4c64bea2c6a7557b24747468
   md5: 182afabe009dc78d8b73100255ee6868
@@ -5488,6 +5504,21 @@ packages:
   license_family: BSD
   size: 13851
   timestamp: 1755217096550
+- conda: https://conda.anaconda.org/conda-forge/noarch/plotly-6.5.2-pyhd8ed1ab_0.conda
+  sha256: 48d2caf66b8209bfb3fa160f5bc7cbd625deaa4826e8aa1bad706b2dd22bbb86
+  md5: 7702bcd70891dd0154d765a69e1afa94
+  depends:
+  - narwhals >=1.15.1
+  - packaging
+  - python >=3.10
+  constrains:
+  - ipywidgets >=7.6
+  license: MIT
+  license_family: MIT
+  purls:
+  - pkg:pypi/plotly?source=hash-mapping
+  size: 4924275
+  timestamp: 1768442503807
 - conda: https://conda.anaconda.org/conda-forge/noarch/pluggy-1.6.0-pyhf9edf01_1.conda
   sha256: e14aafa63efa0528ca99ba568eaf506eb55a0371d12e6250aaaa61718d2eb62e
   md5: d7585b6550ad04c8c5e21097ada2888e

@@ -59,6 +59,7 @@ tqdm = ">=4.67.1,<5"
 ffmpeg = ">=8.0.0,<9"
 mr-box-peripheral-board = ">=0.31.7,<0.32"
 "svg.path" = ">=7.0,<8"
+plotly = ">=6.5.2,<7"
 
 # --- TARGET: Windows (win-64) ---
 [tool.pixi.target.win-64.dependencies]
