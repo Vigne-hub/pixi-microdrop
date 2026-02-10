@@ -69,7 +69,7 @@ environments:
       - conda: https://conda.anaconda.org/alexsk/noarch/debounce-0.4.2-py_0.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/decorator-5.2.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/dramatiq-1.18.0-pyhd8ed1ab_0.conda
-      - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-1.73.24-py_0.conda
+      - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-1.73.22.post2-py_0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-dev-1.73.24-0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-headers-0.1-0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/envisage-7.0.4-pyhe01879c_1.conda
@@ -415,7 +415,7 @@ environments:
       - conda: https://conda.anaconda.org/alexsk/noarch/debounce-0.4.2-py_0.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/decorator-5.2.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/dramatiq-1.18.0-pyhd8ed1ab_0.conda
-      - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-1.73.24-py_0.conda
+      - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-1.73.22.post2-py_0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-dev-1.73.24-0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-headers-0.1-0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/envisage-7.0.4-pyhe01879c_1.conda
@@ -1709,9 +1709,9 @@ packages:
   - pkg:pypi/dramatiq?source=hash-mapping
   size: 76638
   timestamp: 1748650146819
-- conda: https://conda.anaconda.org/alexsk/noarch/dropbot-1.73.24-py_0.conda
-  sha256: cd07b10903151ab868e7537f49b1d40c111da8e82fd94b0400f8cce56ba28540
-  md5: 9a0f5444c2a1d09fcf69eb61adb1244f
+- conda: https://conda.anaconda.org/alexsk/noarch/dropbot-1.73.22.post2-py_0.conda
+  sha256: ad0ef7e8118e957f139ecd3abbf66afc389bde9d8aa6cf0ddc7b2e0e7bbd107d
+  md5: b84639fd600c9b10f3c2f111d952e01e
   depends:
   - aiosignal
   - arduino-rpc
@@ -1721,7 +1721,7 @@ packages:
   - beautifulsoup4
   - conda-helpers
   - debounce
-  - dropbot-dev >=1.73.24,<1.74.0a0
+  - dropbot-dev >=1.73.22.0inf.2,<1.74.0a0
   - hv-switching-board
   - jinja2
   - json-tricks
@@ -1746,8 +1746,8 @@ packages:
   - tabulate
   - teensy-minimal-rpc
   license: MIT
-  size: 518672
-  timestamp: 1760600328378
+  size: 519787
+  timestamp: 1755314263147
 - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-dev-1.73.24-0.conda
   sha256: 38fd3e9c6b9d89aeac4770f3a98a55de2fa083bcef01a38bb62f116e1246e576
   md5: 5c3d62eb992b1a7fa795b76738bcf28f
@@ -4706,7 +4706,7 @@ packages:
 - pypi: ./
   name: microdrop-py
   version: 0.1.0
-  sha256: 86682f2c2c7f8e4a0bbd340a2ac6aa33b930cea26038ef2193b85413b0a8f45a
+  sha256: c29ab408f6c652714dd708edeb0f23b54e920619c1de276f15d3ce4f22909cd4
   requires_dist:
   - pyside6<=6.9.2,<7
   requires_python: '>=3.11'
