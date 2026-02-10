@@ -416,7 +416,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/decorator-5.2.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/dramatiq-1.18.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-1.73.22.post2-py_0.conda
-      - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-dev-1.73.24-0.conda
+      - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-dev-1.73.22.post2-0.conda
       - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-headers-0.1-0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/envisage-7.0.4-pyhe01879c_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/et_xmlfile-2.0.0-pyhd8ed1ab_1.conda
@@ -1748,6 +1748,18 @@ packages:
   license: MIT
   size: 519787
   timestamp: 1755314263147
+- conda: https://conda.anaconda.org/alexsk/noarch/dropbot-dev-1.73.22.post2-0.conda
+  sha256: 15fb07a10b7b56a04c678c48aab7060c09630f325093b709635e906aa9955afb
+  md5: 80fbd82581cb006592427123fd50b7ef
+  depends:
+  - arduino-rpc-dev
+  - base-node-dev
+  - base-node-rpc-dev
+  - dropbot-headers
+  - teensy-minimal-rpc-dev
+  license: MIT
+  size: 180552
+  timestamp: 1755314262133
 - conda: https://conda.anaconda.org/alexsk/noarch/dropbot-dev-1.73.24-0.conda
   sha256: 38fd3e9c6b9d89aeac4770f3a98a55de2fa083bcef01a38bb62f116e1246e576
   md5: 5c3d62eb992b1a7fa795b76738bcf28f
@@ -4706,7 +4718,7 @@ packages:
 - pypi: ./
   name: microdrop-py
   version: 0.1.0
-  sha256: c29ab408f6c652714dd708edeb0f23b54e920619c1de276f15d3ce4f22909cd4
+  sha256: 71f01a58f118f10a40767c27a007e7f13e78a13c2f737bcd3a7189bf82daac88
   requires_dist:
   - pyside6<=6.9.2,<7
   requires_python: '>=3.11'

@@ -63,8 +63,10 @@ plotly = ">=6.5.2,<7"
 ntfsutils = ">=0.1.5,<0.2"
 redis-server = ">=3.0.501,<4"
 dropbot = "1.73.22.*"
+dropbot-dev = "1.73.22.*"
 
 # --- TARGET: Linux (linux-aarch64) ---
 [tool.pixi.target.linux-aarch64.dependencies]
 redis-server = ">=6.0.0"
 dropbot = ">=1.73.22.post2,<2"
+dropbot-dev = ">=1.73.22"
