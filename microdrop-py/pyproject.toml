@@ -12,7 +12,7 @@ requires = ["hatchling"]
 
 [tool.pixi.workspace]
 channels = ["conda-forge", "alexsk", "vignesh229"]
-platforms = ["linux-aarch64", "win-64"]
+platforms = ["linux-aarch64", "win-64", "osx-arm64"]
 
 # --- System Requirements ---
 # Preserved from Linux config. This ensures manylinux_2_31 compatibility
@@ -68,4 +68,7 @@ redis-server = ">=3.0.501,<4"
 
 # --- TARGET: Linux (linux-aarch64) ---
 [tool.pixi.target.linux-aarch64.dependencies]
+redis-server = ">=6.0.0"
+
+[tool.pixi.target.osx-arm64.dependencies]
 redis-server = ">=6.0.0"
