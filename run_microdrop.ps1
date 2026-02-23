@@ -1,8 +1,17 @@
+# Define the expected arguments
+param (
+    [ValidateSet("dropbot", "opendrop")]
+    [string]$Device = "dropbot", # Sets dropbot as the default if no argument is provided
+
+    # Add a flag to safely stash uncommitted work before updating
+    [switch]$Stash
+)
+
 # Configuration: Paths
 # Parent module path (microdrop-py)
-$parentPath = "$PSScriptRoot\microdrop-py"
+$parentPath = Join-Path -Path $PSScriptRoot -ChildPath "microdrop-py"
 # Application source path (microdrop-py\src)
-$targetPath = "$parentPath\src"
+$targetPath = Join-Path -Path $parentPath -ChildPath "src"
 
 Write-Host "----------------------------------------" -ForegroundColor Cyan
 Write-Host "      Pixi Microdrop Launcher           " -ForegroundColor Green
@@ -18,7 +27,12 @@ if (-not (Get-Command "pixi" -ErrorAction SilentlyContinue)) {
 if (Test-Path -Path $parentPath) {
     Write-Host "Updating Parent Module: $parentPath" -ForegroundColor Yellow
     Set-Location -Path $parentPath
-    
+
+    if ($Stash) {
+        Write-Host "Stashing uncommitted changes in parent module..." -ForegroundColor DarkYellow
+        & pixi run git stash
+    }
+
     # We attempt to pull the parent repo
     Write-Host "Running 'pixi run git pull' on parent..." -ForegroundColor Cyan
     try {
@@ -39,14 +53,27 @@ if (Test-Path -Path $targetPath) {
     Set-Location -Path $targetPath
 
     # Git Operations on src
-    Write-Host "Checking for src updates (pixi run git pull)..." -ForegroundColor Cyan
-    & pixi run git checkout main 
+    if ($Stash) {
+        Write-Host "Stashing uncommitted changes in src module..." -ForegroundColor DarkYellow
+        & pixi run git stash
+    }
+
+    Write-Host "Checking for src updates on 'main' branch..." -ForegroundColor Cyan
+    & pixi run git checkout main
     & pixi run git pull
     Write-Host "----------------------------------------" -ForegroundColor Cyan
 
-    # Run Microdrop
-    Write-Host "Running 'pixi run microdrop'..." -ForegroundColor Magenta
-    & pixi run microdrop
+    # Use a switch statement exclusively to route the launch command
+    switch ($Device) {
+        "opendrop" {
+            Write-Host "Starting OpenDrop Microdrop..." -ForegroundColor Green
+            & pixi run opendrop-microdrop
+        }
+        "dropbot" {
+            Write-Host "Starting DropBot Microdrop..." -ForegroundColor Magenta
+            & pixi run microdrop
+        }
+    }
 }
 else {
     Write-Host "Error: The source folder path does not exist:" -ForegroundColor Red
@@ -54,5 +81,6 @@ else {
 }
 
 # Pause at the end so the window doesn't close immediately if run via click
+Write-Host "----------------------------------------" -ForegroundColor Cyan
 Write-Host "Done." -ForegroundColor Gray
-# Read-Host "Press Enter to exit" # Uncomment if you want the window to stay open
+Read-Host "Press Enter to exit" # comment if you do not want the window to stay open
