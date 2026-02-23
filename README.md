@@ -2,6 +2,10 @@
 
 This guide provides instructions on how to set up and run the [Microdrop](https://github.com/Blue-Ocean-Technologies-Inc/Microdrop) project using [Pixi](https://pixi.sh/dev/installation).
 
+## Requirements:
+- Install [Pixi](https://pixi.sh/dev/installation).
+- Run `git clone --recursive https://github.com/Vigne-hub/pixi-microdrop`
+
 ## Easy Way On Windows
 Run `microdrop.bat`
 
