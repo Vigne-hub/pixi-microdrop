@@ -9,42 +9,6 @@ MAGENTA='\033[0;35m'
 GRAY='\033[0;90m'
 NC='\033[0m'
 
-# --- Argument Parsing ---
-DEVICE="dropbot"
-STASH=0
-
-while [[ "$#" -gt 0 ]]; do
-    case $1 in
-        --device|-d)
-            DEVICE="${2,,}"
-            shift 2
-            ;;
-        --stash|-s)
-            STASH=1
-            shift 1
-            ;;
-        -h|--help)
-            echo "Usage: $0 [--device dropbot|opendrop] [--stash]"
-            exit 0
-            ;;
-        *)
-            echo -e "${RED}Unknown parameter passed: $1${NC}"
-            echo "Usage: $0 [--device dropbot|opendrop] [--stash]"
-            exit 1
-            ;;
-    esac
-done
-
-# --- Validate Device & Set Branch ---
-if [[ "$DEVICE" == "dropbot" ]]; then
-    BRANCH="main"
-elif [[ "$DEVICE" == "opendrop" ]]; then
-    BRANCH="opendrop" # <-- CHANGE THIS if your OpenDrop branch has a different name
-else
-    echo -e "${RED}Error: --device must be either 'dropbot' or 'opendrop'. You passed '$DEVICE'.${NC}"
-    exit 1
-fi
-
 # Configuration:
 export QT_MEDIA_BACKEND=gstreamer
 systemctl --user stop wireplumber
@@ -77,10 +41,8 @@ if [ -d "$PARENT_PATH" ]; then
     echo -e "${YELLOW}Updating Parent Module: $PARENT_PATH${NC}"
     cd "$PARENT_PATH" || exit 1
 
-    if [ "$STASH" -eq 1 ]; then
-        echo -e "${YELLOW}Stashing uncommitted changes in parent module...${NC}"
-        pixi run git stash
-    fi
+    echo -e "${YELLOW}Stashing uncommitted changes in parent module...${NC}"
+    pixi run git stash
 
     echo -e "${CYAN}Running 'pixi run git pull' on parent...${NC}"
     pixi run git pull || echo -e "${YELLOW}Warning: Could not pull parent module. Continuing...${NC}"
@@ -94,27 +56,18 @@ if [ -d "$TARGET_PATH" ]; then
     echo -e "${YELLOW}Navigating to Source: $TARGET_PATH${NC}"
     cd "$TARGET_PATH" || exit 1
 
-    if [ "$STASH" -eq 1 ]; then
-        echo -e "${YELLOW}Stashing uncommitted changes in src module...${NC}"
-        pixi run git stash
-    fi
+    echo -e "${YELLOW}Stashing uncommitted changes in src module...${NC}"
+    pixi run git stash
 
     # dynamically checking out the correct branch
-    echo -e "${CYAN}Checking for src updates on '$BRANCH' branch...${NC}"
-    pixi run git checkout "$BRANCH"
+    echo -e "${CYAN}Checking for src updates on current branch...${NC}"
+    # pixi run git checkout "$BRANCH"
     pixi run git pull
     echo -e "${CYAN}----------------------------------------${NC}"
 
-    case "$DEVICE" in
-        opendrop)
-            echo -e "${GREEN}Starting OpenDrop Microdrop...${NC}"
-            pixi run opendrop-microdrop
-            ;;
-        dropbot)
-            echo -e "${MAGENTA}Starting DropBot Microdrop...${NC}"
-            pixi run microdrop
-            ;;
-    esac
+    echo -e "${MAGENTA}Starting Microdrop...${NC}"
+    pixi run microdrop
+
 else
     echo -e "${RED}Error: The source folder path does not exist:${NC}"
     echo -e "${RED}$TARGET_PATH${NC}"
