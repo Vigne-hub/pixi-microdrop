@@ -7,7 +7,13 @@ This guide provides instructions on how to set up and run the [Microdrop](https:
 - Run `git clone --recursive https://github.com/Vigne-hub/pixi-microdrop`
 
 ## Easy Way On Windows
-Run `microdrop.bat`
+Click on `microdrop.bat`
+
+## Mac and Linux
+
+```shell
+sh run_microdrop.sh
+```
 
 ## Manual way
 1. Navigating to the microdrop-py directory:
