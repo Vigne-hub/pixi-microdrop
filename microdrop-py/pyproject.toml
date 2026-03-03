@@ -3,7 +3,7 @@ name = "microdrop-py"
 version = "0.1.0"
 authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
 requires-python = ">= 3.11"
-dependencies = ["pyside6<=6.9.2,<7"]
+dependencies = ["pyside6<=6.9.2,<7", "dotenv>=0.9.9,<0.10"]
 scripts = { microdrop = "examples.microdrop:microdrop" }
 
 [build-system]
@@ -61,6 +61,7 @@ dropbot = ">=1.73.25"
 setuptools = "<=81.0.0"
 pixi-pycharm = ">=0.0.10,<0.0.11"
 pygame = ">=2.6"
+paramiko = ">=4.0.0,<5"
 
 # --- TARGET: Windows (win-64) ---
 [tool.pixi.target.win-64.dependencies]
