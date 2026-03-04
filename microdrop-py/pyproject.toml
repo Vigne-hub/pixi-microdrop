@@ -38,7 +38,8 @@ packages = [
 ]
 
 # --- Shared Dependencies ---
-# redis-server and ntfsutils are removed from here and placed in targets below
+# redis-server and ntfsutils are removed from here and placed in targets
+
 [tool.pixi.dependencies]
 apptools = ">=5.3.1,<6"
 dramatiq = ">=1.18.0,<2"
@@ -62,6 +63,7 @@ setuptools = "<=81.0.0"
 pixi-pycharm = ">=0.0.10,<0.0.11"
 pygame = ">=2.6"
 paramiko = ">=4.0.0,<5"
+platformio = ">=6.1.19"
 
 # --- TARGET: Windows (win-64) ---
 [tool.pixi.target.win-64.dependencies]
