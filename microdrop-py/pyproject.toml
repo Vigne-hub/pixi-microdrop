@@ -4,7 +4,6 @@ version = "0.1.0"
 authors = [{name = "Vigne-hub", email = "vignesh.rajesh@outlook.com"}]
 requires-python = ">= 3.11"
 dependencies = ["pyside6<=6.9.2,<7", "dotenv>=0.9.9,<0.10"]
-scripts = { microdrop = "examples.microdrop:microdrop" }
 
 [build-system]
 build-backend = "hatchling.build"
@@ -81,6 +80,7 @@ redis-server = ">=6.0.0"
 opendrop-microdrop = { cmd = "python run_device_viewer_pluggable.py --device opendrop", cwd = "src/examples/" }
 opendrop-microdrop-backend = { cmd = "python run_device_viewer_pluggable_backend.py --device opendrop", cwd = "src/examples/" }
 opendrop-microdrop-frontend = { cmd = "python run_device_viewer_pluggable_frontend.py --device opendrop", cwd = "src/examples/" }
+microdrop = { cmd = "python run_device_viewer_pluggable.py", cwd = "src/examples/" }
 microdrop-frontend = { cmd = "python run_device_viewer_pluggable_frontend.py", cwd = "src/examples/" }
 microdrop-backend = { cmd = "python run_device_viewer_pluggable_backend.py", cwd = "src/examples/" }
 run_redis = { cmd = "python start_redis_server.py", cwd = "src/examples/" }

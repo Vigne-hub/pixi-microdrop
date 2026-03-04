@@ -7089,7 +7089,7 @@ packages:
 - pypi: ./
   name: microdrop-py
   version: 0.1.0
-  sha256: 0c5078afb8d1067790d5528e0544ac159c414bb8ae6179159d5a25b631b782c0
+  sha256: fda593bc2dd1b5034ffd6518399aaad3f95212d91f8e696c7649ea954cd6ea4b
   requires_dist:
   - pyside6<=6.9.2,<7
   - dotenv>=0.9.9,<0.10
