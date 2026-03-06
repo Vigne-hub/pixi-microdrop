@@ -63,6 +63,7 @@ pixi-pycharm = ">=0.0.10,<0.0.11"
 pygame = ">=2.6"
 paramiko = ">=4.0.0,<5"
 platformio = ">=6.1.19"
+notebook = ">=7.5.4,<8"
 
 # --- TARGET: Windows (win-64) ---
 [tool.pixi.target.win-64.dependencies]
