@@ -20,27 +20,44 @@ Write-Host "----------------------------------------" -ForegroundColor Cyan
 # Check if Pixi is installed before trying any commands
 if (-not (Get-Command "pixi" -ErrorAction SilentlyContinue)) {
     Write-Host "Error: 'pixi' command not found. Is it installed and in your PATH?" -ForegroundColor Red
-    exit
+    exit 1
+}
+
+# Determine whether to use system git directly or fall back to pixi run git
+if (Get-Command "git" -ErrorAction SilentlyContinue) {
+    $git = "git"
+} else {
+    Write-Host "System git not found, using pixi run git as fallback." -ForegroundColor DarkYellow
+    $git = $null  # signals to use pixi run git
+}
+
+function Invoke-Git {
+    param([Parameter(ValueFromRemainingArguments)]$GitArgs)
+    if ($git) {
+        & $git @GitArgs
+    } else {
+        & pixi run git @GitArgs
+    }
 }
 
 # --- Step 1: Update Parent Module (microdrop-py) ---
 if (Test-Path -Path $parentPath) {
     Write-Host "Updating Parent Module: $parentPath" -ForegroundColor Yellow
-    Set-Location -Path $parentPath
+    Push-Location -Path $parentPath
 
     if ($Stash) {
         Write-Host "Stashing uncommitted changes in parent module..." -ForegroundColor DarkYellow
-        & pixi run git stash
+        Invoke-Git stash
     }
 
     # We attempt to pull the parent repo
-    Write-Host "Running 'pixi run git pull' on parent..." -ForegroundColor Cyan
-    try {
-        & pixi run git pull
-    }
-    catch {
+    Write-Host "Pulling latest changes for parent..." -ForegroundColor Cyan
+    Invoke-Git pull
+    if ($LASTEXITCODE -ne 0) {
         Write-Host "Warning: Could not pull parent module. Continuing..." -ForegroundColor DarkYellow
     }
+
+    Pop-Location
     Write-Host "----------------------------------------" -ForegroundColor Cyan
 }
 else {
@@ -50,18 +67,26 @@ else {
 # --- Step 2: Update Source & Run Microdrop (microdrop-py/src) ---
 if (Test-Path -Path $targetPath) {
     Write-Host "Navigating to Source: $targetPath" -ForegroundColor Yellow
-    Set-Location -Path $targetPath
+    Push-Location -Path $targetPath
 
     # Git Operations on src
     if ($Stash) {
         Write-Host "Stashing uncommitted changes in src module..." -ForegroundColor DarkYellow
-        & pixi run git stash
+        Invoke-Git stash
     }
 
-    # dynamically checking out the correct branch
-    Write-Host "Checking for src updates..." -ForegroundColor Cyan
-    & pixi run git pull
+    # Pull latest changes for the src submodule
+    Write-Host "Pulling latest changes for src..." -ForegroundColor Cyan
+    Invoke-Git pull
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Warning: Could not pull src module. Continuing with current state..." -ForegroundColor DarkYellow
+    }
+
+    Pop-Location
     Write-Host "----------------------------------------" -ForegroundColor Cyan
+
+    # Launch from the parent path where pixi.toml lives
+    Set-Location -Path $parentPath
 
     # Use a switch statement exclusively to route the launch command
     switch ($Device) {
@@ -78,9 +103,10 @@ if (Test-Path -Path $targetPath) {
 else {
     Write-Host "Error: The source folder path does not exist:" -ForegroundColor Red
     Write-Host "$targetPath" -ForegroundColor Red
+    exit 1
 }
 
 # Pause at the end so the window doesn't close immediately if run via click
 Write-Host "----------------------------------------" -ForegroundColor Cyan
 Write-Host "Done." -ForegroundColor Gray
-Read-Host "Press Enter to exit" # Uncomment if you want the window to stay open
+Read-Host "Press Enter to exit"
