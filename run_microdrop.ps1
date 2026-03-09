@@ -7,13 +7,6 @@ param (
     [switch]$Stash
 )
 
-# --- Determine Branch based on Device ---
-if ($Device -eq "opendrop") {
-    $Branch = "opendrop" # <-- CHANGE THIS if your OpenDrop branch has a different name
-} else {
-    $Branch = "main"
-}
-
 # Configuration: Paths
 # Parent module path (microdrop-py)
 $parentPath = Join-Path -Path $PSScriptRoot -ChildPath "microdrop-py"
@@ -66,8 +59,7 @@ if (Test-Path -Path $targetPath) {
     }
 
     # dynamically checking out the correct branch
-    Write-Host "Checking for src updates on '$Branch' branch..." -ForegroundColor Cyan
-    & pixi run git checkout $Branch
+    Write-Host "Checking for src updates..." -ForegroundColor Cyan
     & pixi run git pull
     Write-Host "----------------------------------------" -ForegroundColor Cyan
 
