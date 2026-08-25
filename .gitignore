@@ -1,6 +1,10 @@
 # IDE
 .idea/
 
+# Claude Code: shared config is tracked, per-machine permission grants are not
+.claude/settings.local.json
+**/.claude/settings.local.json
+
 # The standalone plugin repos live here as their own git repos
 heater-microdrop-plugin-py/
 magnet-microdrop-plugin-py/
