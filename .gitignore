@@ -10,9 +10,18 @@ fluorescence-microdrop-plugin-py/
 __pycache__/
 *.py[cod]
 
+# Firmware images are distributed with the boards, never through this repo
+firmware_*.zip
+*.hex
+*.uf2
+
 # Scratch
 .superpowers/
 scratch/
+demo/
+microdrop-py/demo/
+img*.png
+ALIGN_CAMERA_PANEL_REVIEW.md
 
 # Built by CI (release-setup-exe workflow) — download from GitHub Releases
 microdrop_setup.exe
