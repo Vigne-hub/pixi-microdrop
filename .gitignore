@@ -20,8 +20,6 @@ firmware_*.zip
 scratch/
 demo/
 microdrop-py/demo/
-img*.png
-ALIGN_CAMERA_PANEL_REVIEW.md
 
 # Built by CI (release-setup-exe workflow) — download from GitHub Releases
 microdrop_setup.exe
