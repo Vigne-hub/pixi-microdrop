@@ -385,6 +385,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/1a/1e/62a8757aa0aa8d5dbf876f6cb6f652a60be9852e7911b59269dd983a7fb5/shiboken6-6.9.2-cp39-abi3-macosx_12_0_universal2.whl
       - pypi: https://files.pythonhosted.org/packages/43/42/43577413bd5ab26f5f21e7a43c9396aac158a5d01900c87e4609c0e96278/pyside6-6.9.2-cp39-abi3-macosx_12_0_universal2.whl
       - pypi: https://files.pythonhosted.org/packages/47/39/a8f4a55001b6a0aaee042e706de2447f21c6dc2a610f3d3debb7d04db821/pyside6_addons-6.9.2-cp39-abi3-macosx_12_0_universal2.whl
+      - pypi: https://files.pythonhosted.org/packages/53/7c/8c8097891c509d98cd128493835c95631c80be6a8f37ed9d25716c2e16f1/opencv_python_headless-5.0.0.93-cp37-abi3-macosx_13_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/b2/b7/545d2c10c1fc15e48653c91efde329a790f2eecfbbf2bd16003b5db2bab0/dotenv-0.9.9-py2.py3-none-any.whl
       p1:
       - conda: https://conda.anaconda.org/alexsk/noarch/arduino-helpers-0.6.5-pyh40db18f_0.conda
@@ -775,6 +776,7 @@ environments:
       - pypi: ./
       - pypi: https://files.pythonhosted.org/packages/0d/17/c5c6b53ddc18f297992099b3d9ec16c855c0ccc83263a21fe4d1c625ec6c/python_dotenv-1.2.3-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/13/cd/e9a6d0aa8794f777627a9fb3cffed0ac8449881b33e2325b5bcff10c36bc/shiboken6-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
+      - pypi: https://files.pythonhosted.org/packages/3a/98/1a28a7101e31801042b3098871a74b76c61581d328ef40774ff4edb53a56/opencv_python_headless-5.0.0.93-cp37-abi3-manylinux_2_28_aarch64.whl
       - pypi: https://files.pythonhosted.org/packages/6f/ee/9023d3851054db24c28312744de8bdb80dcf8de20bd583b6520da416484f/PySide6_Essentials-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
       - pypi: https://files.pythonhosted.org/packages/99/1d/d96496aae8de2b14d372a1e46d06c7f355291c1f3cdd7f90ef48c7d88373/PySide6-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
       - pypi: https://files.pythonhosted.org/packages/b2/b7/545d2c10c1fc15e48653c91efde329a790f2eecfbbf2bd16003b5db2bab0/dotenv-0.9.9-py2.py3-none-any.whl
@@ -1107,6 +1109,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/a4/ea/a56b094a4bf6facf89f52f58e83684e168b1be08c14feb8b99969f3d4189/shiboken6-6.9.2-cp39-abi3-win_amd64.whl
       - pypi: https://files.pythonhosted.org/packages/a8/e3/3b3e869d3e332b6db93f6f64fac3b12f5c48b84f03f2aa50ee5c044ec0de/pyside6_essentials-6.9.2-cp39-abi3-win_amd64.whl
       - pypi: https://files.pythonhosted.org/packages/b2/b7/545d2c10c1fc15e48653c91efde329a790f2eecfbbf2bd16003b5db2bab0/dotenv-0.9.9-py2.py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/b8/88/763b967f7efd7226b82c9fae16d560cba049b1f0c036647e65c610fd636e/opencv_python_headless-5.0.0.93-cp37-abi3-win_amd64.whl
 packages:
 - conda: https://conda.anaconda.org/alexsk/noarch/arduino-helpers-0.6.5-pyh40db18f_0.conda
   sha256: 9be6b6a0c7fc81e5eee41f766b71fc0d19f160558dd3fe977ea672db1b8c25dd
@@ -13394,6 +13397,7 @@ packages:
   requires_dist:
   - pyside6<=6.9.2,<7
   - dotenv>=0.9.9,<0.10
+  - opencv-python-headless>=5.0.0.93,<6
   requires_python: '>=3.11'
 - pypi: https://files.pythonhosted.org/packages/08/21/41960c03721a99e7be99a96ebb8570bdfd6f76f512b5d09074365e27ce28/pyside6_essentials-6.9.2-cp39-abi3-macosx_12_0_universal2.whl
   name: pyside6-essentials
@@ -13427,6 +13431,14 @@ packages:
   version: 6.9.2
   sha256: 8bb1c4326330e53adeac98bfd9dcf57f5173a50318a180938dcc4825d9ca38da
   requires_python: '>=3.9,<3.14'
+- pypi: https://files.pythonhosted.org/packages/3a/98/1a28a7101e31801042b3098871a74b76c61581d328ef40774ff4edb53a56/opencv_python_headless-5.0.0.93-cp37-abi3-manylinux_2_28_aarch64.whl
+  name: opencv-python-headless
+  version: 5.0.0.93
+  sha256: 840bd717c21e5c11cadadc022a823315ea417f961213d06b4df010e019eb16f4
+  requires_dist:
+  - numpy<2.0 ; python_full_version < '3.9'
+  - numpy>=2 ; python_full_version >= '3.9'
+  requires_python: '>=3.6'
 - pypi: https://files.pythonhosted.org/packages/43/42/43577413bd5ab26f5f21e7a43c9396aac158a5d01900c87e4609c0e96278/pyside6-6.9.2-cp39-abi3-macosx_12_0_universal2.whl
   name: pyside6
   version: 6.9.2
@@ -13444,6 +13456,14 @@ packages:
   - shiboken6==6.9.2
   - pyside6-essentials==6.9.2
   requires_python: '>=3.9,<3.14'
+- pypi: https://files.pythonhosted.org/packages/53/7c/8c8097891c509d98cd128493835c95631c80be6a8f37ed9d25716c2e16f1/opencv_python_headless-5.0.0.93-cp37-abi3-macosx_13_0_arm64.whl
+  name: opencv-python-headless
+  version: 5.0.0.93
+  sha256: 030ca5e0837a2963ab36ef896baa9767eb8d2b83353fb28af5a521e40dd8756f
+  requires_dist:
+  - numpy<2.0 ; python_full_version < '3.9'
+  - numpy>=2 ; python_full_version >= '3.9'
+  requires_python: '>=3.6'
 - pypi: https://files.pythonhosted.org/packages/59/90/2e75cbff0e17f16b83d2b7e8434ae9175cae8d6ff816c9b56d307cf53c86/pyside6-6.9.2-cp39-abi3-win_amd64.whl
   name: pyside6
   version: 6.9.2
@@ -13487,6 +13507,14 @@ packages:
   sha256: 29cf74a087b31dafdb5a446b6d7e11cbce8ed2741540e2339c69fbef92c94ce9
   requires_dist:
   - python-dotenv
+- pypi: https://files.pythonhosted.org/packages/b8/88/763b967f7efd7226b82c9fae16d560cba049b1f0c036647e65c610fd636e/opencv_python_headless-5.0.0.93-cp37-abi3-win_amd64.whl
+  name: opencv-python-headless
+  version: 5.0.0.93
+  sha256: 829717b6a95554f273e49e357cee3b3a2a26b6f4842fbc1bed2b45bdd8f87e0e
+  requires_dist:
+  - numpy<2.0 ; python_full_version < '3.9'
+  - numpy>=2 ; python_full_version >= '3.9'
+  requires_python: '>=3.6'
 - pypi: https://files.pythonhosted.org/packages/cc/10/5f494352be48c8c419992c9974bd4f2168c9f99f58a7dad63dc2382396c1/PySide6_Addons-6.8.0.2-cp39-abi3-manylinux_2_31_aarch64.whl
   name: pyside6-addons
   version: 6.8.0.2
