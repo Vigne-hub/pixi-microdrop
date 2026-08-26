@@ -127,7 +127,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Run Microdrop with a custom plugin/context selection.")
     parser.add_argument(
-        "--device", choices=["dropbot", "opendrop", "mock"], default="dropbot",
+        "--device", choices=["dropbot", "portable", "opendrop", "mock"], default="dropbot",
         help="Device whose default plugin set is used when --plugins is "
              "omitted.")
     parser.add_argument(
