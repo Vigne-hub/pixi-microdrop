@@ -7,8 +7,8 @@ disable-model-invocation: true
 Create a new Envisage plugin module named: $ARGUMENTS
 
 ## Current State
-- Plugin registry: !`cat C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py/src/examples/plugin_consts.py`
-- Existing plugins: !`ls -d C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py/src/*/plugin.py 2>/dev/null | head -20`
+- Plugin registry: !`cat microdrop-py/src/examples/plugin_consts.py`
+- Existing plugins: !`ls -d microdrop-py/src/*/plugin.py 2>/dev/null | head -20`
 
 ## Steps
 

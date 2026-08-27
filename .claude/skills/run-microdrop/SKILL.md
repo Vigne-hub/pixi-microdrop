@@ -5,8 +5,8 @@ disable-model-invocation: true
 ---
 
 ## Current State
-- Pixi env: !`cd C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py && pixi info 2>&1 | head -10`
-- Available tasks: !`cd C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py && pixi task list 2>&1`
+- Pixi env: !`cd microdrop-py && pixi info 2>&1 | head -10`
+- Available tasks: !`cd microdrop-py && pixi task list 2>&1`
 
 ## Steps
 
