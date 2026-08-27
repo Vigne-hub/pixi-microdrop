@@ -57,27 +57,27 @@ exclude = [
 
 [tool.pixi.dependencies]
 apptools = ">=5.3.1,<6"
-dramatiq = ">=1.18.0,<2"
-envisage = ">=7.0.4,<8"
+dramatiq = ">=2.2.0,<3"
+envisage = ">=8.0.1,<9"
 pyface = ">=8.0.0,<9"
-pytest = ">=8.4.2,<9"
-shapely = ">=2.1.1,<3"
-pydantic = ">=2.11.7,<3"
-traits = ">=7.0.2,<8"
+pytest = ">=9.1.1,<10"
+shapely = ">=2.1.2,<3"
+pydantic = ">=2.13.4,<3"
+traits = ">=7.1.0,<8"
 traitsui = ">=8.0.0,<9"
 redis-py = ">=6.4.0,<7"
-apscheduler = ">=3.11.0,<4"
-ipython = ">=9.5.0,<10"
-tqdm = ">=4.67.1,<5"
-ffmpeg = ">=8.0.0,<9"
-"svg.path" = ">=7.0,<8"
-plotly = ">=6.5.2,<7"
-dropbot = ">=1.74.4"
-setuptools = "<=81.0.0"
-pixi-pycharm = ">=0.0.10,<0.0.11"
-pygame = ">=2.6"
-paramiko = ">=4.0.0,<5"
-pandas = ">=2.0,<3"
+apscheduler = ">=3.11.3,<4"
+ipython = ">=9.16.1,<10"
+tqdm = ">=4.70.0,<5"
+ffmpeg = ">=8.0.1,<10"
+"svg.path" = ">=7.1,<8"
+plotly = ">=6.9.0,<7"
+dropbot = ">=1.74.4,<2"
+setuptools = ">=79.0.0,<85"
+pixi-pycharm = ">=0.0.12,<0.0.13"
+pygame = ">=2.6.1,<3"
+paramiko = ">=5.0.0,<6"
+pandas = ">=3.0.5,<4"
 black = ">=26.5.1,<27"
 mr-box-peripheral-board = ">=0.31.9,<0.32"
 magnet-microdrop-plugin = ">=1.2.0,<2"
@@ -89,10 +89,10 @@ redis-server = ">=3.0.501,<4"
 
 # --- TARGET: Linux (linux-aarch64) ---
 [tool.pixi.target.linux-aarch64.dependencies]
-redis-server = ">=6.0.0"
+redis-server = ">=8.10.1,<9"
 
 [tool.pixi.target.osx-arm64.dependencies]
-redis-server = ">=6.0.0"
+redis-server = ">=8.10.1,<9"
 
 [tool.pixi.tasks]
 # One command for new clones: installs the shared git hooks (commit-message
