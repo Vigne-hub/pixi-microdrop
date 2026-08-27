@@ -28,28 +28,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ \"$CLAUDE_AUTO_PYTEST\" = \"1\" ] || exit 0; filepath=\"$CLAUDE_FILE_PATH\"; if echo \"$filepath\" | grep -qE '\\.py$'; then basename=$(basename \"$filepath\" .py); testfile=$(find C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py/src/examples/tests -name \"test_*${basename}*\" 2>/dev/null | head -1); if [ -n \"$testfile\" ]; then cd C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py && pixi run pytest \"$testfile\" -x -q 2>&1 | tail -5; fi; fi",
+            "command": "[ \"$CLAUDE_AUTO_PYTEST\" = \"1\" ] || exit 0; filepath=\"$CLAUDE_FILE_PATH\"; if echo \"$filepath\" | grep -qE '\\.py$'; then basename=$(basename \"$filepath\" .py); testfile=$(find \"$CLAUDE_PROJECT_DIR/microdrop-py/src/examples/tests\" -name \"test_*${basename}*\" 2>/dev/null | head -1); if [ -n \"$testfile\" ]; then cd \"$CLAUDE_PROJECT_DIR/microdrop-py\" && pixi run pytest \"$testfile\" -x -q 2>&1 | tail -5; fi; fi",
             "statusMessage": "Running related tests (CLAUDE_AUTO_PYTEST=1)..."
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "matcher": "permission_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "powershell -Command \"[System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms') | Out-Null; [System.Windows.Forms.MessageBox]::Show('Claude needs permission','Claude Code','OK','Information') | Out-Null\" 2>/dev/null &"
-          }
-        ]
-      },
-      {
-        "matcher": "idle_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "powershell -Command \"Add-Type -AssemblyName System.Windows.Forms; $n=New-Object System.Windows.Forms.NotifyIcon; $n.Icon=[System.Drawing.SystemIcons]::Information; $n.Visible=$true; $n.ShowBalloonTip(5000,'Claude Code','Claude is waiting for input','Info')\" 2>/dev/null &"
           }
         ]
       }

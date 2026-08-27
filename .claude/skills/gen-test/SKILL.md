@@ -7,9 +7,9 @@ disable-model-invocation: true
 Generate tests for: $ARGUMENTS
 
 ## Reference Patterns
-- Conftest fixtures: !`cat C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py/src/examples/tests/conftest.py`
-- Common utilities: !`head -50 C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py/src/examples/tests/common.py`
-- Existing tests: !`ls C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py/src/examples/tests/test_*.py`
+- Conftest fixtures: !`cat microdrop-py/src/examples/tests/conftest.py`
+- Common utilities: !`head -50 microdrop-py/src/examples/tests/common.py`
+- Existing tests: !`ls microdrop-py/src/examples/tests/test_*.py`
 
 ## Steps
 

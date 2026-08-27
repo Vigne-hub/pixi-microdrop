@@ -5,11 +5,11 @@ disable-model-invocation: true
 ---
 
 ## Issue Context
-- Issue: !`cd C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py/src && gh issue view $ARGUMENTS`
+- Issue: !`cd microdrop-py/src && gh issue view $ARGUMENTS`
 
 ## Current State
-- Branch: !`cd C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py/src && git branch --show-current`
-- Status: !`cd C:/Users/Info/PycharmProjects/pixi-microdrop/microdrop-py/src && git status --short`
+- Branch: !`cd microdrop-py/src && git branch --show-current`
+- Status: !`cd microdrop-py/src && git status --short`
 
 ## Steps
 
