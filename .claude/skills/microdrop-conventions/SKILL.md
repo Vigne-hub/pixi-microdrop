@@ -90,7 +90,18 @@ user-invocable: false
   stays untouched until PPT-9 deletes it.
 
 ## UI Patterns
-- Views use PySide6 widgets or Pyface TraitsUI views
+- TraitsUI first: build views with TraitsUI (`View`/`Item`/`Group`, editors,
+  Handlers) or Pyface abstractions; drop to raw Qt widgets only when TraitsUI
+  genuinely cannot express the widget or behavior.
+- When raw Qt IS needed, import through the binding shim:
+  `from pyface.qt import QtCore, QtGui, QtWidgets` — never `from PySide6...`
+  directly in new code. Existing PySide6 imports are converted as files are
+  touched, not in sweeps.
+- Views are the VOLATILE layer — view preferences change often, so keep
+  business logic out of them entirely, and make every view instantiable
+  standalone against just its model (no plugin/app scaffolding) so it can be
+  prototyped and tested alone. TraitsUI gives this nearly free via
+  `model.edit_traits()` / `configure_traits()`.
 - Qt layouts (QVBoxLayout, QHBoxLayout, QFormLayout) for widget arrangement
 - Collapsible sections use custom GroupBox patterns
 
@@ -106,6 +117,8 @@ user-invocable: false
 - Plugins: `<module_name>.plugin.Plugin` class
 
 ## Forbidden Patterns
+- Never import `PySide6` directly in new code — go through `pyface.qt`
+  (see UI Patterns).
 - Never import Qt directly in service/model layers — only in views. Inject any
   Qt-aware collaborator (e.g. a flush scheduler) from the view; give services a
   Qt-free default (e.g. `threading.Timer`).
