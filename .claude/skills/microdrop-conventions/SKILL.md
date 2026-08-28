@@ -4,30 +4,18 @@ description: Envisage/Traits/PySide6 code conventions for MicroDrop. Apply when 
 user-invocable: false
 ---
 
-> Apply these conventions PROACTIVELY while writing new code — they are
-> not a cleanup checklist to retrofit later. The user runs periodic
-> directive sweeps over PRs; code that already follows them passes.
-
-## Architecture
-- Three-layer, message-driven: Frontend (PySide6/Qt6) <-> Message Server (Redis/Dramatiq) <-> Backend (DropBot Controller)
-- Entire app is plugin-based using Envisage framework
-- Plugins defined in `plugin_consts.py` — REQUIRED, FRONTEND, BACKEND categories
-
-## Model & State Patterns
-- Models use `traits.api.HasTraits` with typed trait declarations, NOT plain Python classes
-- Use `@observe("trait_name")` for reactive updates, NOT property setters
-- Trait defaults via `_trait_name_default()` method pattern
-- State changes propagate through trait observation, not manual callbacks
+> The CANONICAL style guide is `microdrop-py/src/AGENTS.md` — environment,
+> import sections, Traits typing, naming, docstrings, error handling, and
+> the architecture rules (MVC split, TraitsUI first, decoupling). Read it
+> first; this skill carries only the working directives NOT covered there.
+> Apply all of it PROACTIVELY while writing new code — it is not a cleanup
+> checklist to retrofit later. The user runs periodic directive sweeps over
+> PRs; code that already follows them passes.
 
 ## Service Patterns
 - Services implement `@provides(IServiceInterface)` decorator from Envisage
 - Service interfaces defined in `interfaces/i_*.py` using `traits.api.Interface`
 - Services receive model via dependency injection, NOT global state
-
-## Messaging Patterns
-- Pub/sub via `publish_message(topic=CONST, message=...)` through Dramatiq/Redis
-- Topic constants defined in module `consts.py` files
-- MQTT-style topic matching for subscriptions
 
 ## Plugin Decoupling (inter-plugin communication)
 - Plugins MUST NOT reference other plugins directly. Forbidden: reaching into
@@ -50,7 +38,6 @@ user-invocable: false
 ## Constants & consts.py
 - Subpackages carry their OWN `consts.py` rather than inlining module-level
   magic constants/strings; name distinct formats distinctly.
-- Constants: UPPER_SNAKE_CASE.
 - NEVER define a constant mid-file (e.g. a frozenset between two methods in a
   1500-line view). Constants go in the package `consts.py` (or, for tiny
   single-consumer values, at the very top of the module below the imports).
@@ -89,19 +76,13 @@ user-invocable: false
   `protocol_tree_tab`, id `microdrop.protocol_tree.preferences`); protocol_grid
   stays untouched until PPT-9 deletes it.
 
-## UI Patterns
-- Views use PySide6 widgets or Pyface TraitsUI views
-- Qt layouts (QVBoxLayout, QHBoxLayout, QFormLayout) for widget arrangement
-- Collapsible sections use custom GroupBox patterns
+## Views
+- AGENTS.md owns the TraitsUI-first and MVC rules. The free standalone
+  harness they enable: `model.edit_traits()` / `configure_traits()` runs any
+  view against just its model — use it to prototype and test views alone.
 
-## Naming Conventions
-- The more descriptive the name, the better — for variables, constants,
-  functions and traits alike. Prefer `realtime_mode_settling_time_s` over
-  `settle_s`; spell out units and subject. Never trade descriptiveness
-  for brevity.
-- Interfaces: `I` prefix (IMainModel, IRouteExecutionService)
-- Constants: UPPER_SNAKE_CASE in `consts.py` per module
-- Trait defaults: `_trait_name_default()` method
+## Naming Supplements (beyond AGENTS.md)
+- Trait defaults: `_trait_name_default()` method pattern
 - Observers: `_on_<event>()` or `_<trait_name>_change()`
 - Plugins: `<module_name>.plugin.Plugin` class
 
@@ -119,8 +100,6 @@ user-invocable: false
 - Never publish messages outside Dramatiq workers in backend code
 - Never use `exec()` for PySide6 dialogs — use `show()` with timeout instead
 - Never modify `pixi.lock` directly — use `pixi add` commands
-- Never use `logging.getLogger(__name__)` — always
-  `from logger.logger_service import get_logger; logger = get_logger(__name__)`
 - Never bare `except: pass` and never `print()` for errors — catch
   `Exception` only and log it (`logger.debug(...)` for tolerated no-Redis
   paths, `logger.warning(...)` otherwise, `exc_info=True` when the stack
