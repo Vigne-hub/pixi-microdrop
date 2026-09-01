@@ -1,0 +1,13 @@
+# Install once per clone (from microdrop-py/): `pixi run setup-hooks`.
+# Local mirror of the CI gates: commit-message format (commitizen) and the
+# staged-file sanity checks.
+repos:
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.16.4
+    hooks:
+      - id: commitizen        # commit-msg: enforce Conventional Commits
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-added-large-files
