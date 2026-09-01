@@ -18,6 +18,15 @@ repo and the standalone Microdrop clone share one copy:
 
 @microdrop-py/src/docs/CLAUDE.md
 
+## Releases
+
+Versioned by commitizen from Conventional Commits, like the launcher: every
+push to `master` with a releasable commit (`feat`/`fix`/breaking) bumps the
+version, rewrites `CHANGELOG.md`, tags `vX.Y.Z`, and publishes a GitHub
+Release (`.github/workflows/release.yml`). `CHANGELOG.md` is generated — never
+edit it by hand. `pixi run setup-hooks` (from `microdrop-py/`) installs the
+commit-message hook here as well as in the source and plugin clones.
+
 ## Repo hygiene
 
 Never commit firmware images (`firmware_*.zip`, `.hex`, `.uf2`), experiment
