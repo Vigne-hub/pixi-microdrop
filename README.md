@@ -1,54 +1,48 @@
 # Getting Started with Pixi for Microdrop
 
-This guide provides instructions on how to set up and run the [Microdrop](https://github.com/Blue-Ocean-Technologies-Inc/Microdrop) project using [Pixi](https://pixi.sh/dev/installation).
+This repo is the launcher/environment workspace for
+[Microdrop](https://github.com/Blue-Ocean-Technologies-Inc/Microdrop): a
+reproducible [pixi](https://pixi.sh/dev/installation) environment
+(`microdrop-py/pyproject.toml` + `pixi.lock`) wrapping the Microdrop source as
+the `microdrop-py/src` submodule.
 
-## Easiest Way: the Setup & Launcher app
+## Easiest way: the MicroDrop Launcher
 
-Download the standalone installer/launcher (no Python required) — this link
-always serves the newest build:
+The standalone [MicroDrop Launcher](https://github.com/Blue-Ocean-Technologies-Inc/microdrop-launcher)
+bootstraps everything before any project environment exists — it needs only
+**git** on the machine and installs pixi itself. Permanent links to the newest
+release:
 
-**https://github.com/Blue-Ocean-Technologies-Inc/pixi-microdrop/releases/latest/download/microdrop_setup.exe**
+| OS | Download |
+|---|---|
+| Windows x64 | [microdrop_setup.exe](https://github.com/Blue-Ocean-Technologies-Inc/microdrop-launcher/releases/latest/download/microdrop_setup.exe) |
+| Linux x64 | [microdrop_setup-linux-x86_64](https://github.com/Blue-Ocean-Technologies-Inc/microdrop-launcher/releases/latest/download/microdrop_setup-linux-x86_64) |
+| Linux ARM64 (Raspberry Pi) | [microdrop_setup-linux-aarch64](https://github.com/Blue-Ocean-Technologies-Inc/microdrop-launcher/releases/latest/download/microdrop_setup-linux-aarch64) |
+| macOS Apple Silicon | [microdrop_setup-macos-arm64.dmg](https://github.com/Blue-Ocean-Technologies-Inc/microdrop-launcher/releases/latest/download/microdrop_setup-macos-arm64.dmg) |
 
-Run it and it walks you through everything:
+1. **First run (setup):** choose where to install and which branches of this
+   repo and the Microdrop source to use; it clones this repo (with the
+   submodule) into that directory, installs pixi if missing, and prefetches
+   the environment.
+2. **Every later run (launcher):** pick the launch mode (frontend / backend /
+   dual), the device (dropbot / portable / opendrop / mock), and the plugins
+   per group; manage branches and git maintenance; edit server settings
+   (Redis host/port, Dramatiq workers). Save named config profiles and create
+   desktop shortcuts that launch a profile directly.
 
-1. **First run (pre-install):** choose where to install, pick the branches
-   for this repo and the Microdrop source (dropdowns list the real remote
-   branches), and it clones the repos, installs pixi if missing (official
-   installer, or a manual-install link if you prefer), and prefetches the
-   environment. This phase only appears once.
-2. **Every later run (launcher):** pick which plugins load on boot
-   (required plugins are always on), the device (DropBot / OpenDrop / mock),
-   contexts, branches, and whether each repo auto-updates on launch. From
-   here you can **Launch**, **Create a Desktop Shortcut** (runs the last
-   saved configuration with the Microdrop icon), or start a **New
-   Installation** (optionally deleting the current one).
-
-Settings persist in your user appdata, so shortcuts keep working across
-updates. To change launch parameters, just run the app again.
-
-On Linux/macOS (or if you'd rather not use the exe), the same app is the
-`microdrop_setup.py` script at the repo root — it needs only a system
-Python 3 with tkinter:
-
-```shell
-python3 microdrop_setup.py
-```
-
-> The exe is rebuilt and released automatically (tags `setup-vN`) by CI
-> whenever `microdrop_setup.py` changes on `master` — that's why the
-> `releases/latest` link above is permanent. The exe itself is not tracked
-> in git.
+See the launcher README for platform notes (Linux `chmod +x` and picking the
+asset by `uname -m`; macOS first-launch approval of the unsigned app).
 
 ## Classic scripts
 
-With [Pixi](https://pixi.sh/dev/installation) and git installed and the repo
-cloned (`git clone --recursive https://github.com/Blue-Ocean-Technologies-Inc/pixi-microdrop.git`):
+With [pixi](https://pixi.sh/dev/installation) and git installed and the repo
+cloned (`git clone --recursive https://github.com/Blue-Ocean-Technologies-Inc/pixi-microdrop.git`),
+the scripts at the repo root update the checkout and launch the app:
 
-- **Windows:** click `microdrop.bat` (self-updating launcher), or run
-  `launch_microdrop.ps1` (slim: no git/self-update, just env setup + launch;
-  forwards `--device/--plugins/--contexts` to the app)
-- **Mac/Linux:** `sh run_microdrop.sh` (self-updating), or
-  `sh launch_microdrop.sh` (slim)
+- **Windows:** double-click `microdrop.bat` (DropBot) or
+  `opendrop-microdrop.bat` (OpenDrop). Both run `run_microdrop.ps1`, which
+  stashes local changes, pulls this repo and the submodule, then launches.
+- **Mac/Linux:** `sh run_microdrop.sh` (same self-update, then launch).
 
 ## Manual way
 
@@ -71,9 +65,21 @@ git submodule update --init --recursive
 pixi run microdrop
 ```
 
-   The configurable entry point (what the setup app and slim launchers use)
-   also accepts a plugin/context selection:
+   Other tasks: `pixi run microdrop-frontend` / `microdrop-backend` (one side
+   only), `pixi run opendrop-microdrop` (and its `-frontend` / `-backend`
+   variants), `pixi run run_redis`, and `pixi run setup-hooks` (installs the
+   git hooks in the source and plugin clones).
+
+   The configurable entry point the launcher uses, `microdrop.py`, takes a
+   device and an explicit plugin selection:
 
 ```shell
-pixi run microdrop_launch --device dropbot --plugins DeviceViewerPlugin DropbotControllerPlugin
+pixi run microdrop_launch --device portable --plugins DeviceViewerPlugin PortableDropbotControllerPlugin
 ```
+
+## Peripheral plugins
+
+The heater, magnet, and fluorescence plugins for the classic DropBot rig live
+in their own repos, cloned alongside the source under `microdrop-py/` for
+editable installs (they are deliberately not tracked here). The launcher
+lists them as toggleable plugin groups.
